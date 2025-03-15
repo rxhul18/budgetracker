@@ -70,7 +70,7 @@ function DestokNavbar() {
                     <Logo />
                     <div className='flex h-full'>
                         {items.map(item => (
-                            <NavbarItem link={item.link} label={item.label} key={item.label} toClickCallback={() => setIsOpen(!isOpen)}/>
+                            <NavbarItem link={item.link} label={item.label} key={item.label} />
                         ))}
                     </div>
                 </div>
