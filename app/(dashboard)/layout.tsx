@@ -1,5 +1,5 @@
+import Navbar from '@/components/custom/Navbar'
 import React, { ReactNode } from 'react'
-import Navbar from '../components/custom/Navbar'
 
 function layout({ children }: { children: ReactNode }) {
   return (
