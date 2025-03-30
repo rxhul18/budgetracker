@@ -30,7 +30,7 @@ function MobileNavbar(){
 
     return(
         <div className="block border-separate bg-background md:hidden">
-            <nav className='container flex items-center justify-between px-8 border-b'>
+            <nav className='container flex items-center justify-between px-4 border-b'>
                 <Sheet open={isOpen} onOpenChange={setIsOpen}>
                     <SheetTrigger asChild>
                         <Button variant={"outline"} size={"icon"}>
@@ -65,7 +65,7 @@ function MobileNavbar(){
 function DestokNavbar() {
     return (
         <div className='hidden border-separate md:flex justify-center border-b bg-background'>
-            <nav className='container flex items-center justify-between px-8'>
+            <nav className='container flex items-center justify-between px-4'>
                 <div className='flex h-[80px] min-h-[60px] items-center gap-x-4'>
                     <Logo />
                     <div className='flex h-full'>

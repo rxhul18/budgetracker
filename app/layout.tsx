@@ -5,6 +5,7 @@ import {
   ClerkProvider
 } from '@clerk/nextjs'
 import { Providers } from "@/components/providers/RootProviders";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
         colorScheme: "dark"
       }}>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <Toaster richColors/>
           <Providers> {/* Wrap children inside Providers */}
             {children}
           </Providers>
