@@ -67,6 +67,7 @@ function CreateTransactionDialog({trigger,type}:Props){
               <FormField 
                 control={form.control}
                 name="category"
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 render={(feild)=>(
                   <FormItem>
                     <FormLabel>Category</FormLabel>
