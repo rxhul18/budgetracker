@@ -17,9 +17,10 @@ CREATE TABLE "Category" (
 CREATE TABLE "Transaction" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL,
+    "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "userId" TEXT NOT NULL,
     "amount" REAL NOT NULL,
-    "description" TEXT,
+    "description" TEXT NOT NULL,
     "date" DATETIME NOT NULL,
     "type" TEXT NOT NULL DEFAULT 'income',
     "category" TEXT NOT NULL,

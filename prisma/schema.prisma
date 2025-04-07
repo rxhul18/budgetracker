@@ -29,34 +29,34 @@ model Category {
 }
 
 model Transaction {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
+  id           String   @id @default(uuid())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
+  userId       String
   amount       Float
-  description  String?
+  description  String
   date         DateTime
   type         String   @default("income")
   category     String
   categoryIcon String
 }
 
-model MonthHistory{
-  userId String
-  day   Int
-  month Int
-  year  Int
-  income Float
+model MonthHistory {
+  userId  String
+  day     Int
+  month   Int
+  year    Int
+  income  Float
   expense Float
 
   @@id([userId, day, month, year])
 }
 
-model YearHistory{
-  userId String
-  month Int
-  year  Int
-  income Float
+model YearHistory {
+  userId  String
+  month   Int
+  year    Int
+  income  Float
   expense Float
 
   @@id([userId, month, year])
