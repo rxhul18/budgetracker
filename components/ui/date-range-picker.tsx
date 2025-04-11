@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
 import React, { type FC, useState, useEffect, useRef } from 'react'
