@@ -40,7 +40,7 @@ function StatsCards({ userSettings, from, to }: Props) {
                     value={income}
                     title="Income"
                     icon={
-                        <TrendingUp className='size-12 items-center rounded-lg p-2 text-emerald-100 bg-emerald-400/10'/>
+                        <TrendingUp className='size-12 items-center rounded-lg p-2 text-emerald-500 bg-emerald-400/10'/>
                     }
                 />
             </SkeletonWrapper>

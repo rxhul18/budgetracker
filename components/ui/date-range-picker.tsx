@@ -17,6 +17,7 @@ import {
 import { Switch } from './switch'
 import { ChevronUpIcon, ChevronDownIcon, CheckIcon } from '@radix-ui/react-icons'
 import { cn } from '@/lib/utils'
+import { JSX } from 'react/jsx-runtime'
 
 export interface DateRangePickerProps {
   /** Click handler for applying the updates from DateRangePicker. */
@@ -115,8 +116,8 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
   )
 
   // Refs to store the values of range and rangeCompare when the date picker is opened
-  const openedRangeRef = useRef<DateRange | undefined>()
-  const openedRangeCompareRef = useRef<DateRange | undefined>()
+  const openedRangeRef = useRef<DateRange | undefined>(undefined)
+  const openedRangeCompareRef = useRef<DateRange | undefined>(undefined)
 
   const [selectedPreset, setSelectedPreset] = useState<string | undefined>(undefined)
 
