@@ -21,9 +21,10 @@ import { useTheme } from 'next-themes';
 interface Props {
     type: TransactionsType;
     successCallback: (category: Category) => void;
+    trigger?: React.ReactNode;
 }
 
-function CreateCategoryDialog({ type, successCallback }: Props) {
+function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
     const [open, setOpen] = useState(false)
     const form = useForm<CreateCategorySchemaType>({
         resolver: zodResolver(CreateCategorySchema),
@@ -43,7 +44,7 @@ function CreateCategoryDialog({ type, successCallback }: Props) {
                 icon: "",
                 type
             });
-            toast.success(`Category ${data.name} created successfully 🎉`,{
+            toast.success(`Category ${data.name} created successfully 🎉`, {
                 id: "create-category"
             })
 
@@ -67,15 +68,16 @@ function CreateCategoryDialog({ type, successCallback }: Props) {
             id: "create-category"
         });
         mutate(values);
-    },[mutate]);
+    }, [mutate]);
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant={"ghost"} className='flex border-separate items-center justify-center rounded-none border-b p-3 text-muted-foreground'>
-                    <PlusSquare className='mr-2 size-4' />
-                    Create new
-                </Button>
+                {trigger ? (trigger) :
+                    <Button variant={"ghost"} className='flex border-separate items-center justify-center rounded-none border-b p-3 text-muted-foreground'>
+                        <PlusSquare className='mr-2 size-4' />
+                        Create new
+                    </Button>}
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
@@ -97,7 +99,7 @@ function CreateCategoryDialog({ type, successCallback }: Props) {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
-                                    <FormControl><Input {...field} placeholder='Category'/></FormControl>
+                                    <FormControl><Input {...field} placeholder='Category' /></FormControl>
                                     <FormDescription>This is how your category will appear in the app</FormDescription>
                                 </FormItem>
                             )}
@@ -156,7 +158,7 @@ function CreateCategoryDialog({ type, successCallback }: Props) {
                     </DialogClose>
                     <Button onClick={form.handleSubmit(onSubmit)}>
                         {!isPending && "Create"}
-                        {isPending && <Loader2 className='animate-spin'/>}
+                        {isPending && <Loader2 className='animate-spin' />}
                     </Button>
                 </DialogFooter>
             </DialogContent>
