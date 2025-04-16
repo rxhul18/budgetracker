@@ -1,11 +1,65 @@
 "use client";
 
-import React from 'react'
+import { Category } from '@prisma/client';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import React, { ReactNode } from 'react'
+import { DeleteCategory } from '../_actions/categories';
+import { toast } from 'sonner';
+import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { TransactionsType } from '@/lib/types';
+interface Props {
+    trigger: ReactNode;
+    category: Category;
+}
 
-function DeleteCategoryDialog() {
-  return (
-    <div>DeleteCategoryDialog</div>
-  )
+function DeleteCategoryDialog({ category, trigger }: Props) {
+
+    const categoryIdentifier = `${category.name}-${category.type}`
+    const queryClient = useQueryClient();
+
+    const deleteMutation = useMutation({
+        mutationFn: DeleteCategory,
+        onSuccess: async () => {
+            toast.success("Category deleted successfully", {
+                id: categoryIdentifier,
+            });
+
+            await queryClient.invalidateQueries({
+                queryKey: ['categories']
+            });
+        },
+        onError: () => {
+            toast.error("Something went wrong", {
+                id: categoryIdentifier,
+            });
+        }
+    })
+
+    return (
+        <AlertDialog>
+            <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
+            <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogDescription>This action cannot be undone. This will permanently delete your category</AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                    <AlertDialogAction>Cancel</AlertDialogAction>
+                    <AlertDialogAction onClick={() => {
+                        toast.loading("Deleting category...", {
+                            id: categoryIdentifier,
+                        });
+                        deleteMutation.mutate({
+                            name: category.name,
+                            type: category.type as TransactionsType
+                        })
+                    }}>
+                        Continue
+                    </AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+    )
 }
 
 export default DeleteCategoryDialog

@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 import { Category } from '@prisma/client';
+import DeleteCategoryDialog from '../_components/DeleteCategoryDialog';
 
 export default function Manage() {
   return (
@@ -90,7 +91,7 @@ const CategoryList = ({ type }: { type: TransactionsType }) => {
         )}
         {dataAvailable && (
           <div className="grid grid-flow-row gap-2 p-2 sm:grid-flow-row sm:grid-col-2 md:grid-cols-2 lg:grid-cols-4">
-            {categoriesQuery.data.map((category:Category) => (
+            {categoriesQuery.data.map((category: Category) => (
               <CategoryCard category={category} key={category.name} />
             ))}
           </div>
@@ -107,9 +108,11 @@ function CategoryCard({ category }: { category: Category }) {
         <span className='text-3xl' role='img'>{category.icon}</span>
         <span>{category.name}</span>
       </div>
-      <Button className='flex w-full border-separate items-center g-2 rounded-t-none text-muted-foreground hover:bg-red-500/20' variant={"secondary"}>
-        <TrashIcon className='h-4 w-4' /> Remove
-      </Button>
+      <DeleteCategoryDialog category={category} trigger={
+        <Button className='flex w-full border-separate items-center g-2 rounded-t-none text-muted-foreground hover:bg-red-500/20' variant={"secondary"}>
+          <TrashIcon className='h-4 w-4' /> Remove
+        </Button>
+      } />
     </div>
   )
 }
