@@ -16,7 +16,7 @@ import DeleteCategoryDialog from '../_components/DeleteCategoryDialog';
 export default function Manage() {
   return (
     <>
-      <div className='border-b bg-card flex justify-center'>
+      <div className='border-b bg-card flex justify-center px-4'>
         <div className="container flex flex-wrap items-center justify-between gap-6 py-8">
           <div className="">
             <p className='text-3xl font-bold'>Manage</p>
@@ -25,7 +25,7 @@ export default function Manage() {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center gap-4 p-4">
-        <Card className='md:container max-w-[90%]'>
+        <Card className='md:container w-full'>
           <CardHeader>
             <CardTitle>Currency</CardTitle>
             <CardDescription>Set your default currency for transactions</CardDescription>
@@ -34,7 +34,7 @@ export default function Manage() {
             <CurrencyComboBox />
           </CardContent>
         </Card>
-        <div className='md:container max-w-[90%] space-y-4'>
+        <div className='md:container w-full space-y-4'>
           <CategoryList type="income" />
           <CategoryList type="expense" />
         </div>
@@ -52,8 +52,8 @@ const CategoryList = ({ type }: { type: TransactionsType }) => {
   const dataAvailable = categoriesQuery.data && categoriesQuery.data.length > 0;
 
   return (
-    <SkeletonWrapper isLoading={categoriesQuery.isFetching}>
-      <Card className=''>
+    <SkeletonWrapper isLoading={categoriesQuery.isLoading}>
+      <Card>
         <CardHeader>
           <CardTitle className='flex justify-between items-center gap-2'>
             <div className="flex items-center gap-2 ">
