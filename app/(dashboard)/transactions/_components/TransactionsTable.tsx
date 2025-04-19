@@ -107,7 +107,6 @@ const csvConfig = mkConfig({
     useKeysAsHeaders: true,
 })
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const emptyData: any[] = []
 
 function TransactionsTable({ from, to }: Props) {
