@@ -22,7 +22,6 @@ export function DataTableColumnHeader<TData, TValue>({
     column,
     title,
     className,
-    trigger
 }: DataTableColumnHeaderProps<TData, TValue>) {
     if (!column.getCanSort()) {
         return <div className={cn(className)}>{title}</div>
