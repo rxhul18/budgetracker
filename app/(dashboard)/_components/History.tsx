@@ -43,7 +43,7 @@ export default function History({
                 <h2 className="mt-12 text-3xl font-bold">History</h2>
                 <Card className='col-span-12 mt-2 w-full'>
                     <CardHeader className='gap-2'>
-                        <CardTitle className='gird grid-flow-row justify-between gap-2 md:grid-flow-col flex'>
+                        <CardTitle className='gird grid-flow-row justify-between gap-2 md:grid-flow-col flex flex-col sm:flex-row'>
                             <HistoryPeriodSelector
                                 period={period}
                                 timeframe={timeframe}

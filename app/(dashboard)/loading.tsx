@@ -17,7 +17,7 @@ export default function Loading() {
   }, [progress])
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
+    <div className="flex min-h-[80vh] flex-col items-center justify-center bg-background p-4">
       <div className="w-full max-w-sm space-y-6 text-center">
         <div className="flex flex-col items-center space-y-4">
           <div className="relative h-12 w-12 rounded-full bg-muted/30 flex items-center justify-center">
